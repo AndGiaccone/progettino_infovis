@@ -15,10 +15,10 @@ function drawCharacter() {
 			(Yes i know, there are exactly 10 butterflies, but never say never, the json could be wrong!)*/
 			stickymen[i] = new Stickyman(i,data[i]);
 			stickymen[i].headListener(function() {sortAndDraw('testa')})
-			//console.log(stickymen[i].attributi)
-		//	stickymen[i].headListener(function() {sortAndDraw('braccia')})
-		//	stickymen[i].headListener(function() {sortAndDraw('gambe')})
-		//	stickymen[i].headListener(function() {sortAndDraw('busto')})
+			stickymen[i].armListener(function() {sortAndDraw('braccia')})
+			stickymen[i].legDListener(function() {sortAndDraw('gambe')})
+			stickymen[i].legSListener(function() {sortAndDraw('gambe')})
+			stickymen[i].bodyListener(function() {sortAndDraw('busto')})
 			//butterflies[i].moveTo(data[i].x*width, data[i].y*height, 5000+Math.floor(Math.random()*3000));
 
 		}

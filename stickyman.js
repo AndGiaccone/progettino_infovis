@@ -2,30 +2,43 @@ class Stickyman {
 
 	constructor(xa, attributi, dimension = 20) {
 		this.width = document.body.clientWidth/dimension -5
-		this.y = 20
+		this.y = this.width*2/6
 		this.attributi = attributi
 		this.xa = xa
 
+		let scaleTi = this.width*2/17 //8
+		let scaleTf = this.width*2/8 //17
+
+		let scaleGi = this.width*2/4 //30
+		let scaleGf = this.width*2/2 //60
+
+		let scaleBri = this.width*2/4 //30
+		let scaleBrf = this.width*1.5 //60
+
+		let scaleBui = this.width*2/3 //~40
+		let scaleBuf = this.width*2/2 //60
+
+		let scaleS = this.width*2/25 //5
 
 		var scaleGambe = d3.scaleLinear(); 
 		scaleGambe.domain([0, 200]); // Set the input domainscale
-		scaleGambe.range([30, 60]); // Set the output range
+		scaleGambe.range([scaleGi, scaleGf]); // Set the output range
 
 		var scaleTesta = d3.scaleLinear(); 
 		scaleTesta.domain([0, 200]); // Set the input domainscale
-		scaleTesta.range([8, 17]); // Set the output range
+		scaleTesta.range([scaleTi, scaleTf]); // Set the output range
 
 		var scaleBraccia = d3.scaleLinear(); 
 		scaleBraccia.domain([0, 200]); // Set the input domainscale
-		scaleBraccia.range([30, 100]); // Set the output range
+		scaleBraccia.range([scaleBri, scaleBrf]); // Set the output range
 		
 		var scaleBusto = d3.scaleLinear(); 
 		scaleBusto.domain([0, 10]); // Set the input domainscale
-		scaleBusto.range([40, 60]); // Set the output range
+		scaleBusto.range([scaleBui, scaleBuf]); // Set the output range
 
 		var scaleSpessore = d3.scaleLinear(); 
 		scaleSpessore.domain([0, 70]); // Set the input domainscale
-		scaleSpessore.range([1, 5]); // Set the output range
+		scaleSpessore.range([1, scaleS]); // Set the output range
 
 
 		this.x_offset = xa*this.width//document.body.clientWidth*(dimension/100)+(document.body.clientWidth*(dimension/200))//xa*(this.width)+(this.width/2)
@@ -34,7 +47,7 @@ class Stickyman {
 		this.svg = d3.select('body')
 			.append('svg')
 			.attr('width', this.width)
-			.attr('viewBox', '0 0 '+this.width+ ','+this.width+'')
+			.attr('viewBox', '0 0 '+this.width+ ','+this.width*2+'')
 			.attr('transform', 'translate('+this.width*xa+', '+this.width*xa+')')
 			.attr('id',xa)
 
@@ -93,9 +106,25 @@ class Stickyman {
 		this.testa.on('mouseup', func)
 	}
 
+	bodyListener(func){
+		this.busto.on('mouseup', func)
+	}
+
+	armListener(func){
+		this.braccia.on('mouseup', func)
+	}
+
+	legDListener(func){
+		this.gambaD.on('mouseup', func)
+	}
+
+	legSListener(func){
+		this.gambaS.on('mouseup', func)
+	}
+
 
 	moveTo(x, duration = 4000) {
-		let x1 = x-this.x_offset
+		let x1 = x-this.x_offset-this.width*this.xa
 		let xN =  x*this.width
 
 		let delay_duration = Math.floor(Math.random()*500)
