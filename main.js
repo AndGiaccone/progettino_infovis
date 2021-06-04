@@ -4,22 +4,18 @@ const width = (document.body.clientWidth);
 const height = (document.body.clientHeight);
 
 let stickymen = [];
-//let tmpSm = [];
 
-function drawCharacter() {
+function drawStickyman() {
 	d3.json('stickymen.json').then(function(data) {
 
 		for(let i=0; i<data.length; i++) {
 
-			/*check if there are enough butterflies to complete the letter
-			(Yes i know, there are exactly 10 butterflies, but never say never, the json could be wrong!)*/
-			stickymen[i] = new Stickyman(i,data[i]);
+			stickymen[i] = new Stickyman(i,data[i],data.length);
 			stickymen[i].headListener(function() {sortAndDraw('testa')})
 			stickymen[i].armListener(function() {sortAndDraw('braccia')})
 			stickymen[i].legDListener(function() {sortAndDraw('gambe')})
 			stickymen[i].legSListener(function() {sortAndDraw('gambe')})
 			stickymen[i].bodyListener(function() {sortAndDraw('busto')})
-			//butterflies[i].moveTo(data[i].x*width, data[i].y*height, 5000+Math.floor(Math.random()*3000));
 
 		}
 
@@ -38,14 +34,9 @@ function sortAndDraw(chiave) {
 	}
 }
 
-//save();
-//sortAndDraw();
-
-
-drawCharacter();
+drawStickyman();
 
 d3.select('svg')
 	.on('click', function(event) {
 		sortAndDraw(event.key);
 	});
-//drawCharacter();

@@ -6,46 +6,45 @@ class Stickyman {
 		this.attributi = attributi
 		this.xa = xa
 
-		let scaleTi = this.width*2/17 //8
-		let scaleTf = this.width*2/8 //17
+		let scaleTi = this.width*2/17
+		let scaleTf = this.width*2/8 
 
-		let scaleGi = this.width*2/4 //30
-		let scaleGf = this.width*2/2 //60
+		let scaleGi = this.width*2/4 
+		let scaleGf = this.width*2/2 
 
-		let scaleBri = this.width*2/4 //30
-		let scaleBrf = this.width*1.5 //60
+		let scaleBri = this.width*2/4 
+		let scaleBrf = this.width*1.5 
 
-		let scaleBui = this.width*2/3 //~40
-		let scaleBuf = this.width*2/2 //60
+		let scaleBui = this.width*2/3
+		let scaleBuf = this.width*2/2 
 
-		let scaleS = this.width*2/25 //5
+		let scaleS = this.width*2/25
 
 		var scaleGambe = d3.scaleLinear(); 
-		scaleGambe.domain([0, 200]); // Set the input domainscale
-		scaleGambe.range([scaleGi, scaleGf]); // Set the output range
+		scaleGambe.domain([0, 200]); 
+		scaleGambe.range([scaleGi, scaleGf]); 
 
 		var scaleTesta = d3.scaleLinear(); 
-		scaleTesta.domain([0, 200]); // Set the input domainscale
-		scaleTesta.range([scaleTi, scaleTf]); // Set the output range
+		scaleTesta.domain([0, 200]); 
+		scaleTesta.range([scaleTi, scaleTf]); 
 
 		var scaleBraccia = d3.scaleLinear(); 
-		scaleBraccia.domain([0, 200]); // Set the input domainscale
-		scaleBraccia.range([scaleBri, scaleBrf]); // Set the output range
+		scaleBraccia.domain([0, 200]); 
+		scaleBraccia.range([scaleBri, scaleBrf]); 
 		
 		var scaleBusto = d3.scaleLinear(); 
-		scaleBusto.domain([0, 10]); // Set the input domainscale
-		scaleBusto.range([scaleBui, scaleBuf]); // Set the output range
+		scaleBusto.domain([0, 10]); 
+		scaleBusto.range([scaleBui, scaleBuf]); 
 
 		var scaleSpessore = d3.scaleLinear(); 
-		scaleSpessore.domain([0, 70]); // Set the input domainscale
-		scaleSpessore.range([1, scaleS]); // Set the output range
+		scaleSpessore.domain([0, 70]); 
+		scaleSpessore.range([1, scaleS]); 
 
 		this.c = xa
 		if (this.c == 10) this.c == A
 
 
-		this.x_offset = xa*this.width//document.body.clientWidth*(dimension/100)+(document.body.clientWidth*(dimension/200))//xa*(this.width)+(this.width/2)
-		//this.y_offset = document.body.clientWidth*(this.width/2)
+		this.x_offset = xa*this.width
 
 		this.svg = d3.select('body')
 			.append('svg')
@@ -54,14 +53,12 @@ class Stickyman {
 			.attr('transform', 'translate('+(this.width-document.body.clientWidth/dimension)+', '+this.width+')')
 			.attr('id',xa)
 
-		//Left wing
 		this.testa = this.svg.append('g')
 		this.testa.append('circle')
 			.attr("cx", this.width/2)
 			.attr("cy", this.y)
 			.attr("r", scaleTesta(attributi.testa))
 			.attr("fill", "#"+this.c+this.c+this.c+this.c+this.c+this.c);
-
 
 		this.busto = this.svg.append('g')
 		this.busto.append('line')
@@ -89,7 +86,6 @@ class Stickyman {
     		.attr("y1", this.y+scaleTesta(attributi.testa)+scaleBusto(attributi.busto)+scaleGambe(attributi.gambe))
       		.attr("x2", this.width/2-1)
       		.attr("y2", this.y+scaleTesta(attributi.testa)/2+scaleBusto(attributi.busto));
-
 
       	this.gambaD = this.svg.append('g')
       	this.gambaD.append("line") 
@@ -128,7 +124,6 @@ class Stickyman {
 
 	moveTo(x, duration = 4000) {
 		let x1 = x*this.width-this.x_offset
-		//let xN =  x*this.width
 
 		let delay_duration = Math.floor(Math.random()*500)
 		let turn_duration = Math.floor(Math.random()*duration/2)-delay_duration
@@ -136,7 +131,6 @@ class Stickyman {
 		let asseY = parseInt(Math.random()*5)
 		let a = this.width*asseY
 		if (parseInt(a)%2 == 0) a = -a
-		//console.log(asseY,a,x1)
 
 		let move_duration = duration-turn_duration
 
@@ -159,7 +153,5 @@ class Stickyman {
 
 	}
 
-
-	
 
 }
