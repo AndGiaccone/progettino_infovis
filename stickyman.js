@@ -41,7 +41,12 @@ class Stickyman {
 		scaleSpessore.range([1, scaleS]); 
 
 		this.c = xa
-		if (this.c == 10) this.c == A
+		if (this.c == 10) this.c = 'A'
+		if (this.c == 11) this.c = 'B'
+		if (this.c == 12) this.c = 'C'
+		if (this.c == 13) this.c = 'D'
+		if (this.c == 14) this.c = 'E'
+		if (this.c >= 15) this.c = 'F'
 
 
 		this.x_offset = xa*this.width
@@ -84,8 +89,8 @@ class Stickyman {
 			.style("stroke-width", scaleSpessore(scaleGambe(attributi.gambe)))
     		.attr("x1", this.width/2-scaleBraccia(attributi.braccia)/4)
     		.attr("y1", this.y+scaleTesta(attributi.testa)+scaleBusto(attributi.busto)+scaleGambe(attributi.gambe))
-      		.attr("x2", this.width/2-1)
-      		.attr("y2", this.y+scaleTesta(attributi.testa)/2+scaleBusto(attributi.busto));
+      		.attr("x2", this.width/2-scaleSpessore(attributi.busto*3))
+      		.attr("y2", this.y+scaleTesta(attributi.testa)/2+scaleBusto(attributi.busto)-2);
 
       	this.gambaD = this.svg.append('g')
       	this.gambaD.append("line") 
@@ -93,8 +98,8 @@ class Stickyman {
 			.style("stroke-width", scaleSpessore(scaleGambe(attributi.gambe)))
     		.attr("x1", this.width/2+scaleBraccia(attributi.braccia)/4)
     		.attr("y1", this.y+scaleTesta(attributi.testa)+scaleBusto(attributi.busto)+scaleGambe(attributi.gambe))
-      		.attr("x2", this.width/2+1)
-      		.attr("y2", this.y+scaleTesta(attributi.testa)/2+scaleBusto(attributi.busto));
+      		.attr("x2", this.width/2+scaleSpessore(attributi.busto*3))
+      		.attr("y2", this.y+scaleTesta(attributi.testa)/2+scaleBusto(attributi.busto)-2);
 
 
 
