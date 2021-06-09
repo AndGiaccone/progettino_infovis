@@ -25,10 +25,10 @@ class Stickyman {
 		if (attributi.braccia > 200) attributi.braccia = 200
 		if (attributi.busto > 10) attributi.busto = 10
 
-		if (attributi.gambe < 0) attributi.gambe = Math.abs(attributi.gambe)
-		if (attributi.testa < 0) attributi.testa = Math.abs(attributi.testa)
-		if (attributi.braccia < 0) attributi.braccia = Math.abs(attributi.braccia)
-		if (attributi.busto < 0) attributi.busto = Math.abs(attributi.busto)
+		if (attributi.gambe < 0) attributi.gambe = 0
+		if (attributi.testa < 0) attributi.testa = 0
+		if (attributi.braccia < 0) attributi.braccia = 0
+		if (attributi.busto < 0) attributi.busto = 0
 	
 
 		var scaleGambe = d3.scaleLinear(); 
