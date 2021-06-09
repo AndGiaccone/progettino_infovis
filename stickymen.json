@@ -1,24 +1,24 @@
 [
 	{
 		"busto":1,
-		"gambe":100,
+		"gambe":600,
 		"braccia":50,
 		"testa":75
 	},
 	{
 		"busto":2,
-		"gambe":130,
-		"braccia":150,
+		"gambe":-130,
+		"braccia":1150,
 		"testa":15
 	},
 	{
 		"busto":3,
 		"gambe":10,
-		"braccia":45,
-		"testa":175
+		"braccia":-45,
+		"testa":2175
 	},
 	{
-		"busto":4,
+		"busto":24,
 		"gambe":80,
 		"braccia":60,
 		"testa":150
