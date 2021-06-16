@@ -1,7 +1,7 @@
 class Stickyman {
 
 	constructor(xa, attributi, dimension = 10) {
-		this.width = document.body.clientWidth/dimension -1
+		this.width = document.body.clientWidth/dimension -2
 		this.y = this.width*2/6
 		this.attributi = attributi
 		this.xa = xa
